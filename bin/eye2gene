@@ -29,7 +29,7 @@ BANNER
        'Use the given configuration file',
        argument: true
 
-    on 'g', 'data_dir=',
+    on 'd', 'data_dir=',
        'Directory storing all app files & from where the app is served from.',
        argument: true
 

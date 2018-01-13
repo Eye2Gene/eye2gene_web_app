@@ -74,7 +74,7 @@ module Eye2Gene
         num_threads: 1,
         port: 3000,
         host: '0.0.0.0',
-        eye2gene_dir: File.join(Dir.home, '.eye2gene/'),
+        data_dir: File.join(Dir.home, '.eye2gene/'),
         ssl: false
       }
     end

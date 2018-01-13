@@ -47,11 +47,11 @@ module Eye2Gene
       self
     end
 
-    # default eye2gene_dir = $HOME/.eye2gene/
+    # default data_dir = $HOME/.eye2gene/
     # default public_dir  = $HOME/.eye2gene/public/
     # default users_dir   = $HOME/.eye2gene/users/
     # default tmp_dir     = $HOME/.eye2gene/tmp/
-    attr_reader :config, :eye2gene_dir, :public_dir, :users_dir, :tmp_dir
+    attr_reader :config, :data_dir, :public_dir, :users_dir, :tmp_dir
 
     # Starting the app manually
     def run
@@ -102,8 +102,8 @@ module Eye2Gene
 
     # Set up the directory structure in @config[:gd_public_dir]
     def init_dirs
-      config[:eye2gene_dir] = File.expand_path(config[:eye2gene_dir])
-      logger.debug "Eye2Gene Directory: #{config[:eye2gene_dir]}"
+      config[:data_dir] = File.expand_path(config[:data_dir])
+      logger.debug "Eye2Gene Directory: #{config[:data_dir]}"
       init_public_dir
       init_public_data_dirs
       init_tmp_dir
@@ -112,7 +112,7 @@ module Eye2Gene
     end
 
     def init_public_dir
-      @public_dir = File.join(config[:eye2gene_dir], 'public')
+      @public_dir = File.join(config[:data_dir], 'public')
       logger.debug "public_dir Directory: #{@public_dir}"
       FileUtils.mkdir_p @public_dir unless Dir.exist?(@public_dir)
       root_assets = File.join(Eye2Gene.root, 'public/assets')
@@ -139,13 +139,13 @@ module Eye2Gene
     end
 
     def init_tmp_dir
-      @tmp_dir = File.join(config[:eye2gene_dir], 'tmp')
+      @tmp_dir = File.join(config[:data_dir], 'tmp')
       logger.debug "tmp_dir Directory: #{@tmp_dir}"
       FileUtils.mkdir_p @tmp_dir unless Dir.exist? @tmp_dir
     end
 
     def init_users_dir
-      @users_dir = File.join(config[:eye2gene_dir], 'users')
+      @users_dir = File.join(config[:data_dir], 'users')
       logger.debug "users_dir Directory: #{@users_dir}"
       FileUtils.mkdir_p @users_dir unless Dir.exist? @users_dir
     end
