@@ -24,7 +24,7 @@ module Eye2Gene
     class << self
       extend Forwardable
 
-      def_delegators Eye2Gene, :config, :logger, :users_dir, :tmp_dir,
+      def_delegators Eye2Gene, :config, :logger, :public_dir, :users_dir, :tmp_dir
 
       # Runs the matlab analysis
       def run(params, user, url)
