@@ -25,6 +25,9 @@ Examples:
   $ eye2gene --num_threads 8 --port 8888
 
 BANNER
+    on 'a', 'analysis_script=',
+       'Analysis script to run.'
+
     on 'c', 'config_file=',
        'Use the given configuration file',
        argument: true

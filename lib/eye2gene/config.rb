@@ -75,7 +75,8 @@ module Eye2Gene
         port: 3000,
         host: '0.0.0.0',
         data_dir: File.join(Dir.home, '.eye2gene/'),
-        ssl: false
+        ssl: false,
+        analysis_script: 'eye2gene_prediction'
       }
     end
 
