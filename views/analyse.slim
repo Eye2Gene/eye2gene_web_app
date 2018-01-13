@@ -1,0 +1,36 @@
+#analysis_container.container
+  .section
+    h1.light-blue-text.text-darken-3 Eye2Gene
+    .card.analyse_card
+      .card-content
+        span.card-title.light-blue-text.text-darken-3 File Upload
+        p.lead Please upload your autofluorescence retinal images below.
+        .file_space#fine-uploader-validation
+        form#eye2gene_analysis
+          - if session[:user].nil?
+            input type="hidden" name="user" value="#{Base64.encode64('eye2gene').chomp}"
+          - else
+            input type="hidden" name="user" value="#{Base64.encode64(session[:user].info['email']).chomp}"
+        a#analysis_btn.waves-effect.waves-light.btn.btn-large.right.light-blue.darken-3
+          i.material-icons.right cloud
+          | Analyse
+        .clearfix
+    #analysis_results style="display:none;"
+      .actions.right
+        a#download-all-results.waves-effect.btn-flat.nopadding.light-blue-text.text-darken-3
+          i.material-icons  file_download
+        a#delete_results.waves-effect.btn-flat.nopadding.light-blue-text.text-darken-3
+          i.material-icons  delete
+        a#share_the_link_btn.waves-effect.btn-flat.nopadding.light-blue-text.text-darken-3 style="display:none;"
+          i.material-icons  link
+        a#share_btn.waves-effect.btn-flat.nopadding.light-blue-text.text-darken-3
+          i.material-icons  share
+        a#open_in_new_btn.waves-effect.btn-flat.nopadding.light-blue-text.text-darken-3
+          i.material-icons  open_in_new
+      span.card-title.light-blue-text.text-darken-3 style="font-size: 3rem; margin-bottom:0"  Eye2Gene Results
+      .card.analyse_card
+        .card-content style="padding:2rem 3.5rem;"
+          span.card-title.light-blue-text.text-darken-3  GENENAME
+        .card-action
+          .btn-flat.waves-effect.nopadding.light-blue-text.text-darken-3  54%
+          .clearfix
