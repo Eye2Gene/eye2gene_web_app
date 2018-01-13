@@ -83,3 +83,198 @@ App 42413 stdout:
 [ N 2018-01-13 12:19:58.9447 42382/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 42411, application /Volumes/Data/project/eye2gene_web_app/public (development)
 [ N 2018-01-13 12:19:58.9447 42382/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 42413, application /Volumes/Data/project/eye2gene_web_app/public (development)
 [ N 2018-01-13 12:19:59.2686 42382/T1 age/Cor/CoreMain.cpp:1150 ]: Passenger core shutdown finished
+[ N 2018-01-13 12:28:14.2744 45768/T1 age/Wat/WatchdogMain.cpp:1267 ]: Starting Passenger watchdog...
+[ N 2018-01-13 12:28:14.2875 45770/T1 age/Cor/CoreMain.cpp:1165 ]: Starting Passenger core...
+[ N 2018-01-13 12:28:14.2881 45770/T1 age/Cor/CoreMain.cpp:249 ]: Passenger core running in multi-application mode.
+[ N 2018-01-13 12:28:14.2996 45770/T1 age/Cor/CoreMain.cpp:905 ]: Passenger core online, PID 45770
+App 45785 stdout: 
+[ N 2018-01-13 12:28:16.6000 45770/T5 age/Cor/SecurityUpdateChecker.h:374 ]: Security update check: no update found (next check in 24 hours)
+[ E 2018-01-13 12:28:16.6128 45770/T5 Crypto.cpp:988 ]: Removing Passenger private key from keychain failed: write permissions error. Please remove the private key from the certificate labeled Phusion Passenger Open Source in your keychain.
+App 45785 stdout: [2018-01-13 12:28:17] DEBUG  Reading configuration file: /Users/ismailm/.eye2gene.conf.
+App 45785 stdout: [2018-01-13 12:28:17] DEBUG  Eye2Gene Directory: /Users/ismailm/.eye2gene
+App 45785 stdout: [2018-01-13 12:28:17] DEBUG  public_dir Directory: /Users/ismailm/.eye2gene/public
+App 45785 stdout: [2018-01-13 12:28:17] DEBUG  tmp_dir Directory: /Users/ismailm/.eye2gene/tmp
+App 45785 stdout: [2018-01-13 12:28:17] DEBUG  users_dir Directory: /Users/ismailm/.eye2gene/users
+App 45785 stdout: [2018-01-13 12:28:17] DEBUG  Will use 6 threads to run Eye2Gene.
+App 45800 stdout: 
+App 45800 stdout: [2018-01-13 12:28:17] DEBUG  {"captures"=>[]}
+App 45800 stdout: [2018-01-13 12:28:19] DEBUG  {"captures"=>[]}
+App 45800 stdout: [2018-01-13 12:28:19] DEBUG  {"captures"=>[]}
+App 45800 stdout: [2018-01-13 12:28:21] DEBUG  {"captures"=>[]}
+App 45800 stdout: [2018-01-13 12:28:21] DEBUG  {"captures"=>[]}
+App 45800 stdout: [2018-01-13 12:30:28] DEBUG  {"qquuid"=>"b88f03db-8404-4c9e-b143-cbbbabf21b99", "qqfilename"=>"test.jpg", "qqtotalfilesize"=>"251779", "qqfile"=>{"filename"=>"test.jpg", "type"=>"image/jpeg", "name"=>"qqfile", "tempfile"=>#<Tempfile:/var/folders/h2/kw_dsxqn2mb8vj0w69ygz_mr0000gn/T/RackMultipart20180113-45800-mj5awh.jpg>, "head"=>"Content-Disposition: form-data; name=\"qqfile\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "captures"=>[]}
+App 45800 stdout: [2018-01-13 12:30:28] DEBUG  {"captures"=>[]}
+App 45800 stdout: [2018-01-13 12:32:06] DEBUG  {"captures"=>[]}
+App 45800 stdout: [2018-01-13 12:32:15] DEBUG  {"qquuid"=>"fd8611a4-5dab-48a7-a3dd-edf5ecf9cb66", "qqfilename"=>"test.jpg", "qqtotalfilesize"=>"251779", "qqfile"=>{"filename"=>"test.jpg", "type"=>"image/jpeg", "name"=>"qqfile", "tempfile"=>#<Tempfile:/var/folders/h2/kw_dsxqn2mb8vj0w69ygz_mr0000gn/T/RackMultipart20180113-45800-8pb0yl.jpg>, "head"=>"Content-Disposition: form-data; name=\"qqfile\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "captures"=>[]}
+App 45800 stdout: [2018-01-13 12:32:15] DEBUG  {"captures"=>[]}
+App 46049 stdout: 
+
+[ N 2018-01-13 12:32:16.7126 45770/T7 age/Cor/CoreMain.cpp:589 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-01-13 12:32:16.7126 45770/T1 age/Cor/CoreMain.cpp:1080 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-01-13 12:32:16.7127 45770/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 45800, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:32:16.7127 45770/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46049, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:32:16.7130 45770/Tb Ser/Server.h:885 ]: [ServerThr.3] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7130 45770/T7 Ser/Server.h:885 ]: [ServerThr.1] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7130 45770/T7 Ser/Server.h:531 ]: [ServerThr.1] Shutdown finished
+[ N 2018-01-13 12:32:16.7130 45770/Td Ser/Server.h:885 ]: [ServerThr.4] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7130 45770/Td Ser/Server.h:531 ]: [ServerThr.4] Shutdown finished
+[ N 2018-01-13 12:32:16.7130 45770/Tb Ser/Server.h:531 ]: [ServerThr.3] Shutdown finished
+[ N 2018-01-13 12:32:16.7131 45770/T9 Ser/Server.h:885 ]: [ServerThr.2] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7131 45770/Tf Ser/Server.h:885 ]: [ServerThr.5] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7131 45770/T9 Ser/Server.h:531 ]: [ServerThr.2] Shutdown finished
+[ N 2018-01-13 12:32:16.7131 45770/Tf Ser/Server.h:531 ]: [ServerThr.5] Shutdown finished
+[ N 2018-01-13 12:32:16.7131 45770/Tn Ser/Server.h:885 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-01-13 12:32:16.7131 45770/Tn Ser/Server.h:531 ]: [ApiServer] Shutdown finished
+[ N 2018-01-13 12:32:16.7131 45770/Tk Ser/Server.h:885 ]: [ServerThr.7] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7131 45770/Tl Ser/Server.h:885 ]: [ServerThr.8] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7132 45770/Th Ser/Server.h:885 ]: [ServerThr.6] Freed 128 spare client objects
+[ N 2018-01-13 12:32:16.7132 45770/Tl Ser/Server.h:531 ]: [ServerThr.8] Shutdown finished
+[ N 2018-01-13 12:32:16.7132 45770/Tk Ser/Server.h:531 ]: [ServerThr.7] Shutdown finished
+[ N 2018-01-13 12:32:16.7132 45770/Th Ser/Server.h:531 ]: [ServerThr.6] Shutdown finished
+[ N 2018-01-13 12:32:16.7132 45770/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 45800, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:32:16.7133 45770/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46049, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:32:17.0298 45770/T1 age/Cor/CoreMain.cpp:1150 ]: Passenger core shutdown finished
+[ N 2018-01-13 12:32:18.0160 46151/T1 age/Wat/WatchdogMain.cpp:1267 ]: Starting Passenger watchdog...
+[ N 2018-01-13 12:32:18.0311 46153/T1 age/Cor/CoreMain.cpp:1165 ]: Starting Passenger core...
+[ N 2018-01-13 12:32:18.0316 46153/T1 age/Cor/CoreMain.cpp:249 ]: Passenger core running in multi-application mode.
+[ N 2018-01-13 12:32:18.0435 46153/T1 age/Cor/CoreMain.cpp:905 ]: Passenger core online, PID 46153
+App 46167 stdout: 
+[ N 2018-01-13 12:32:20.3101 46153/T5 age/Cor/SecurityUpdateChecker.h:374 ]: Security update check: no update found (next check in 24 hours)
+[ E 2018-01-13 12:32:20.3380 46153/T5 Crypto.cpp:988 ]: Removing Passenger private key from keychain failed: write permissions error. Please remove the private key from the certificate labeled Phusion Passenger Open Source in your keychain.
+App 46167 stdout: [2018-01-13 12:32:20] DEBUG  Reading configuration file: /Users/ismailm/.eye2gene.conf.
+App 46167 stdout: [2018-01-13 12:32:20] DEBUG  Eye2Gene Directory: /Users/ismailm/.eye2gene
+App 46167 stdout: [2018-01-13 12:32:20] DEBUG  public_dir Directory: /Users/ismailm/.eye2gene/public
+App 46167 stdout: [2018-01-13 12:32:20] DEBUG  tmp_dir Directory: /Users/ismailm/.eye2gene/tmp
+App 46167 stdout: [2018-01-13 12:32:20] DEBUG  users_dir Directory: /Users/ismailm/.eye2gene/users
+App 46167 stdout: [2018-01-13 12:32:20] DEBUG  Will use 6 threads to run Eye2Gene.
+App 46185 stdout: 
+App 46185 stdout: [2018-01-13 12:32:20] DEBUG  {"captures"=>[]}
+App 46186 stdout: 
+App 46186 stdout: [2018-01-13 12:32:20] DEBUG  {"captures"=>[]}
+App 46185 stdout: [2018-01-13 12:32:21] DEBUG  {"captures"=>[]}
+App 46185 stdout: [2018-01-13 12:32:23] DEBUG  {"captures"=>[]}
+App 46185 stdout: [2018-01-13 12:32:23] DEBUG  {"captures"=>[]}
+App 46185 stdout: [2018-01-13 12:32:49] DEBUG  {"captures"=>[]}
+App 46185 stdout: [2018-01-13 12:32:49] DEBUG  {"captures"=>[]}
+
+[ N 2018-01-13 12:33:00.8546 46153/T7 age/Cor/CoreMain.cpp:589 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-01-13 12:33:00.8546 46153/T1 age/Cor/CoreMain.cpp:1080 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-01-13 12:33:00.8546 46153/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46185, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:33:00.8548 46153/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46186, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:33:00.8550 46153/T9 Ser/Server.h:885 ]: [ServerThr.2] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8550 46153/T9 Ser/Server.h:531 ]: [ServerThr.2] Shutdown finished
+[ N 2018-01-13 12:33:00.8550 46153/T7 Ser/Server.h:885 ]: [ServerThr.1] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8551 46153/T7 Ser/Server.h:531 ]: [ServerThr.1] Shutdown finished
+[ N 2018-01-13 12:33:00.8552 46153/To Ser/Server.h:885 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-01-13 12:33:00.8552 46153/To Ser/Server.h:531 ]: [ApiServer] Shutdown finished
+[ N 2018-01-13 12:33:00.8555 46153/Tb Ser/Server.h:885 ]: [ServerThr.3] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8555 46153/Tb Ser/Server.h:531 ]: [ServerThr.3] Shutdown finished
+[ N 2018-01-13 12:33:00.8555 46153/Td Ser/Server.h:885 ]: [ServerThr.4] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8556 46153/Tf Ser/Server.h:885 ]: [ServerThr.5] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8556 46153/Td Ser/Server.h:531 ]: [ServerThr.4] Shutdown finished
+[ N 2018-01-13 12:33:00.8556 46153/Tf Ser/Server.h:531 ]: [ServerThr.5] Shutdown finished
+[ N 2018-01-13 12:33:00.8556 46153/Th Ser/Server.h:885 ]: [ServerThr.6] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8556 46153/Th Ser/Server.h:531 ]: [ServerThr.6] Shutdown finished
+[ N 2018-01-13 12:33:00.8556 46153/Tj Ser/Server.h:885 ]: [ServerThr.7] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8557 46153/Tl Ser/Server.h:885 ]: [ServerThr.8] Freed 128 spare client objects
+[ N 2018-01-13 12:33:00.8557 46153/Tj Ser/Server.h:531 ]: [ServerThr.7] Shutdown finished
+[ N 2018-01-13 12:33:00.8557 46153/Tl Ser/Server.h:531 ]: [ServerThr.8] Shutdown finished
+[ N 2018-01-13 12:33:00.8557 46153/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46185, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:33:00.8558 46153/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46186, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:33:01.1775 46153/T1 age/Cor/CoreMain.cpp:1150 ]: Passenger core shutdown finished
+[ N 2018-01-13 12:33:17.6730 46527/T1 age/Wat/WatchdogMain.cpp:1267 ]: Starting Passenger watchdog...
+[ N 2018-01-13 12:33:17.6861 46529/T1 age/Cor/CoreMain.cpp:1165 ]: Starting Passenger core...
+[ N 2018-01-13 12:33:17.6868 46529/T1 age/Cor/CoreMain.cpp:249 ]: Passenger core running in multi-application mode.
+[ N 2018-01-13 12:33:17.6977 46529/T1 age/Cor/CoreMain.cpp:905 ]: Passenger core online, PID 46529
+App 46548 stdout: 
+[ N 2018-01-13 12:33:19.9671 46529/T5 age/Cor/SecurityUpdateChecker.h:374 ]: Security update check: no update found (next check in 24 hours)
+[ E 2018-01-13 12:33:19.9829 46529/T5 Crypto.cpp:988 ]: Removing Passenger private key from keychain failed: write permissions error. Please remove the private key from the certificate labeled Phusion Passenger Open Source in your keychain.
+App 46548 stdout: [2018-01-13 12:33:20] DEBUG  Reading configuration file: /Users/ismailm/.eye2gene.conf.
+App 46548 stdout: [2018-01-13 12:33:20] DEBUG  Eye2Gene Directory: /Users/ismailm/.eye2gene
+App 46548 stdout: [2018-01-13 12:33:20] DEBUG  public_dir Directory: /Users/ismailm/.eye2gene/public
+App 46548 stdout: [2018-01-13 12:33:20] DEBUG  tmp_dir Directory: /Users/ismailm/.eye2gene/tmp
+App 46548 stdout: [2018-01-13 12:33:20] DEBUG  users_dir Directory: /Users/ismailm/.eye2gene/users
+App 46548 stdout: [2018-01-13 12:33:20] DEBUG  Will use 6 threads to run Eye2Gene.
+App 46563 stdout: 
+App 46563 stdout: [2018-01-13 12:33:20] DEBUG  {"captures"=>[]}
+App 46564 stdout: 
+App 46564 stdout: [2018-01-13 12:33:20] DEBUG  {"captures"=>[]}
+App 46563 stdout: [2018-01-13 12:37:04] DEBUG  {"captures"=>[]}
+App 46563 stdout: [2018-01-13 12:37:11] DEBUG  {"captures"=>[]}
+App 46563 stdout: [2018-01-13 12:37:34] DEBUG  {"captures"=>[]}
+App 46563 stdout: [2018-01-13 12:37:41] DEBUG  {"captures"=>[]}
+[ N 2018-01-13 12:38:20.6958 46529/T4 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46564, application /Volumes/Data/project/eye2gene_web_app/public (development)
+App 46563 stdout: [2018-01-13 12:40:18] DEBUG  {"qquuid"=>"8278ab29-36bb-4f11-ac0f-1b1e9c9747c9", "qqfilename"=>"test.jpg", "qqtotalfilesize"=>"251779", "qqfile"=>{"filename"=>"test.jpg", "type"=>"image/jpeg", "name"=>"qqfile", "tempfile"=>#<Tempfile:/var/folders/h2/kw_dsxqn2mb8vj0w69ygz_mr0000gn/T/RackMultipart20180113-46563-1jha7l9.jpg>, "head"=>"Content-Disposition: form-data; name=\"qqfile\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "captures"=>[]}
+App 46563 stdout: [2018-01-13 12:40:18] DEBUG  {"captures"=>[]}
+App 46563 stdout: [2018-01-13 12:41:59] DEBUG  {"user"=>"ZXllMmdlbmU=", "files"=>"[{\"name\":\"test.jpg\",\"originalName\":\"test.jpg\",\"uuid\":\"8278ab29-36bb-4f11-ac0f-1b1e9c9747c9\",\"size\":251779,\"status\":\"upload successful\",\"batchId\":\"d6a258d6-9b07-41bd-9e28-6e5128c00aa3\",\"id\":0}]", "captures"=>[]}
+App 46563 stdout: [2018-01-13 12:41:59] DEBUG  Creating Run Directory: /Users/ismailm/.eye2gene/users/eye2gene/2018-01-13_12-41-59_984-984965000
+App 46563 stdout: [2018-01-13 12:41:59] DEBUG  Running CMD:  -nodisplay -nosplash -nodesktop -r analysis -sd '/Users/ismailm/.eye2gene/users/eye2gene/2018-01-13_12-41-59_984-984965000/out'
+App 46548 stderr: sh: -nodisplay: command not found
+App 46563 stdout: [2018-01-13 12:41:59] DEBUG  Matlab CMD Exit Code: 127
+App 46563 stdout: [2018-01-13 12:42:06] DEBUG  {"captures"=>[]}
+
+[ N 2018-01-13 12:43:02.4886 46529/T7 age/Cor/CoreMain.cpp:589 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-01-13 12:43:02.4887 46529/T1 age/Cor/CoreMain.cpp:1080 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-01-13 12:43:02.4887 46529/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46563, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:43:02.4889 46529/T7 Ser/Server.h:885 ]: [ServerThr.1] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4890 46529/T7 Ser/Server.h:531 ]: [ServerThr.1] Shutdown finished
+[ N 2018-01-13 12:43:02.4890 46529/Te Ser/Server.h:885 ]: [ServerThr.4] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4890 46529/Te Ser/Server.h:531 ]: [ServerThr.4] Shutdown finished
+[ N 2018-01-13 12:43:02.4890 46529/Th Ser/Server.h:885 ]: [ServerThr.6] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4890 46529/Tb Ser/Server.h:885 ]: [ServerThr.3] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4891 46529/Th Ser/Server.h:531 ]: [ServerThr.6] Shutdown finished
+[ N 2018-01-13 12:43:02.4891 46529/Tj Ser/Server.h:885 ]: [ServerThr.7] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4891 46529/T9 Ser/Server.h:885 ]: [ServerThr.2] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4891 46529/Tb Ser/Server.h:531 ]: [ServerThr.3] Shutdown finished
+[ N 2018-01-13 12:43:02.4891 46529/Tj Ser/Server.h:531 ]: [ServerThr.7] Shutdown finished
+[ N 2018-01-13 12:43:02.4892 46529/T9 Ser/Server.h:531 ]: [ServerThr.2] Shutdown finished
+[ N 2018-01-13 12:43:02.4892 46529/Tl Ser/Server.h:885 ]: [ServerThr.8] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4892 46529/Tf Ser/Server.h:885 ]: [ServerThr.5] Freed 128 spare client objects
+[ N 2018-01-13 12:43:02.4892 46529/Tf Ser/Server.h:531 ]: [ServerThr.5] Shutdown finished
+[ N 2018-01-13 12:43:02.4892 46529/Tl Ser/Server.h:531 ]: [ServerThr.8] Shutdown finished
+[ N 2018-01-13 12:43:02.4892 46529/Tn Ser/Server.h:885 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-01-13 12:43:02.4892 46529/Tn Ser/Server.h:531 ]: [ApiServer] Shutdown finished
+[ N 2018-01-13 12:43:02.4893 46529/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 46563, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:43:02.8092 46529/T1 age/Cor/CoreMain.cpp:1150 ]: Passenger core shutdown finished
+[ N 2018-01-13 12:43:18.5319 47635/T1 age/Wat/WatchdogMain.cpp:1267 ]: Starting Passenger watchdog...
+[ N 2018-01-13 12:43:18.5461 47637/T1 age/Cor/CoreMain.cpp:1165 ]: Starting Passenger core...
+[ N 2018-01-13 12:43:18.5468 47637/T1 age/Cor/CoreMain.cpp:249 ]: Passenger core running in multi-application mode.
+[ N 2018-01-13 12:43:18.5580 47637/T1 age/Cor/CoreMain.cpp:905 ]: Passenger core online, PID 47637
+App 47649 stdout: 
+App 47649 stdout: [2018-01-13 12:43:19] DEBUG  Reading configuration file: /Users/ismailm/.eye2gene.conf.
+App 47649 stdout: [2018-01-13 12:43:19] DEBUG  Eye2Gene Directory: /Users/ismailm/.eye2gene
+App 47649 stdout: [2018-01-13 12:43:19] DEBUG  public_dir Directory: /Users/ismailm/.eye2gene/public
+App 47649 stdout: [2018-01-13 12:43:19] DEBUG  tmp_dir Directory: /Users/ismailm/.eye2gene/tmp
+App 47649 stdout: [2018-01-13 12:43:19] DEBUG  users_dir Directory: /Users/ismailm/.eye2gene/users
+App 47649 stdout: [2018-01-13 12:43:19] DEBUG  Will use 6 threads to run Eye2Gene.
+App 47665 stdout: 
+App 47665 stdout: [2018-01-13 12:43:20] DEBUG  {"captures"=>[]}
+App 47665 stdout: [2018-01-13 12:43:20] DEBUG  {"captures"=>[]}
+[ N 2018-01-13 12:43:20.8601 47637/T5 age/Cor/SecurityUpdateChecker.h:374 ]: Security update check: no update found (next check in 24 hours)
+[ E 2018-01-13 12:43:20.8822 47637/T5 Crypto.cpp:988 ]: Removing Passenger private key from keychain failed: write permissions error. Please remove the private key from the certificate labeled Phusion Passenger Open Source in your keychain.
+App 47665 stdout: [2018-01-13 12:43:22] DEBUG  {"captures"=>[]}
+App 47665 stdout: [2018-01-13 12:43:52] DEBUG  {"captures"=>[]}
+
+[ N 2018-01-13 12:54:21.4627 47637/T7 age/Cor/CoreMain.cpp:589 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2018-01-13 12:54:21.4627 47637/T1 age/Cor/CoreMain.cpp:1080 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2018-01-13 12:54:21.4627 47637/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 47665, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:54:21.4630 47637/Tl Ser/Server.h:885 ]: [ServerThr.8] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4630 47637/Tl Ser/Server.h:531 ]: [ServerThr.8] Shutdown finished
+[ N 2018-01-13 12:54:21.4630 47637/Tj Ser/Server.h:885 ]: [ServerThr.7] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4631 47637/Tj Ser/Server.h:531 ]: [ServerThr.7] Shutdown finished
+[ N 2018-01-13 12:54:21.4631 47637/Tb Ser/Server.h:885 ]: [ServerThr.3] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4631 47637/Tb Ser/Server.h:531 ]: [ServerThr.3] Shutdown finished
+[ N 2018-01-13 12:54:21.4631 47637/Th Ser/Server.h:885 ]: [ServerThr.6] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4631 47637/Th Ser/Server.h:531 ]: [ServerThr.6] Shutdown finished
+[ N 2018-01-13 12:54:21.4632 47637/Td Ser/Server.h:885 ]: [ServerThr.4] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4632 47637/Td Ser/Server.h:531 ]: [ServerThr.4] Shutdown finished
+[ N 2018-01-13 12:54:21.4632 47637/Tn Ser/Server.h:885 ]: [ApiServer] Freed 0 spare client objects
+[ N 2018-01-13 12:54:21.4632 47637/T9 Ser/Server.h:885 ]: [ServerThr.2] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4632 47637/T7 Ser/Server.h:885 ]: [ServerThr.1] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4632 47637/Tf Ser/Server.h:885 ]: [ServerThr.5] Freed 128 spare client objects
+[ N 2018-01-13 12:54:21.4632 47637/Tn Ser/Server.h:531 ]: [ApiServer] Shutdown finished
+[ N 2018-01-13 12:54:21.4632 47637/T7 Ser/Server.h:531 ]: [ServerThr.1] Shutdown finished
+[ N 2018-01-13 12:54:21.4632 47637/Tf Ser/Server.h:531 ]: [ServerThr.5] Shutdown finished
+[ N 2018-01-13 12:54:21.4632 47637/T9 Ser/Server.h:531 ]: [ServerThr.2] Shutdown finished
+[ N 2018-01-13 12:54:21.4633 47637/T1 age/Cor/CoreMain.cpp:994 ]: Checking whether to disconnect long-running connections for process 47665, application /Volumes/Data/project/eye2gene_web_app/public (development)
+[ N 2018-01-13 12:54:21.7852 47637/T1 age/Cor/CoreMain.cpp:1150 ]: Passenger core shutdown finished
