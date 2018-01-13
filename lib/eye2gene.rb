@@ -151,17 +151,11 @@ module Eye2Gene
     end
 
     def set_up_default_user_dir
-      set_up_archive_dir
       user_dir    = File.join(Eye2Gene.users_dir, 'eye2gene')
       user_public = File.join(Eye2Gene.public_dir, 'eye2gene/users')
       FileUtils.mkdir(user_dir) unless Dir.exist?(user_dir)
       return if File.exist? File.join(user_public, 'eye2gene')
       FileUtils.ln_s(user_dir, user_public)
-    end
-
-    def set_up_archive_dir
-      archive_dir = File.join(Eye2Gene.users_dir, 'archive')
-      FileUtils.mkdir(archive_dir) unless Dir.exist?(archive_dir)
     end
 
     def check_num_threads

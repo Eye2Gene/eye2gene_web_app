@@ -201,10 +201,8 @@ module Eye2Gene
     # Delete a Results Page
     post '/delete_result' do
       email = session[:user].nil? ? 'eye2gene' : session[:user].info['email']
-      @results_url = File.join(Eye2Gene.users_dir, email, params['uuid'])
-      if Dir.exist? @results_url
-        FileUtils.mv(@results_url, File.join(Eye2Gene.users_dir, 'archive'))
-      end
+      results_dir = File.join(Eye2Gene.users_dir, email, params['uuid'])
+      FileUtils.rm_r(results_dir)
     end
 
     get '/auth/:provider/callback' do
