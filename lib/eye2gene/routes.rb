@@ -95,7 +95,7 @@ module Eye2Gene
 
     # For any request that hits the app, log incoming params at debug level.
     before do
-      logger.debug params
+      logger.debug "#{@env["REQUEST_METHOD"]} #{@env["REQUEST_URI"]} => #{params}"
     end
 
     # # Home page (marketing page)
