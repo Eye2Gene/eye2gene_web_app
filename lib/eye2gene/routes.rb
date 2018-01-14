@@ -151,7 +151,8 @@ module Eye2Gene
     # Run the Eye2Gene Analysis
     post '/analyse' do
       email = Base64.decode64(params[:user])
-      Eye2GeneAnalysis.run(params, email, base_url).to_json
+      @data = Eye2GeneAnalysis.run(params, email, base_url)
+      slim :result, layout: false
     end
 
     post '/upload' do
