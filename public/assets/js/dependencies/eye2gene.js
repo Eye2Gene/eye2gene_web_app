@@ -28,7 +28,7 @@ if (!EG) {
                 }
             },
             validation: {
-                allowedExtensions: ['jpeg', 'jpg', 'tif'],
+                allowedExtensions: ['dng','aai','pdf','art','mpeg','avs','bgr','jbig','bmp','braille','cals','xc','caption','cin','cip','clip','cmyk','cur','cut','dcm','pcx','dds','ttf','djvu','dot','dpx','ps','ps2','ps3','ept','exr','fax','fits','plasma','fts','gif','gradient','gray','tiff','hdr','hrz','html','tga','icon','info','inline','ipl','png','jnx*','jpeg','json','label','mac','map','mask','mat','matte','miff','mono','mpc','msl','svg','mtv','mvg','null','otb','uyvy','palm','pnm','pango','pattern','pcd','pcl','pict','pdb','pes','pfm','xpm','pix','preview','psd','pwp','sun','rgb','rgf','rla','rle','scr','sct','sfw','sgi','six','sixel','stegano','txt','tile','tim','uil','vicar','vid','viff','vips','wbmp','wmf','wmz','wpg','x','xbm','xcf','xps','xwd','ycbcr','yuv'],
                 itemLimit: 500,
                 sizeLimit: 78650000 // 75MB
             },

@@ -84,7 +84,7 @@ module Eye2Gene
           new_fname = f[:uuid] + File.extname(f[:originalName])
           new_file = File.join(@run_dir, new_fname)
           FileUtils.mv(t_input_file, new_file)
-          FileUtils.chmod 0644, new_file
+          FileUtils.chmod(0644, new_file)
           next unless (Dir.entries(t_dir) - %w[. ..]).empty?
           FileUtils.rm_r(t_dir)
         end
