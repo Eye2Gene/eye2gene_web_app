@@ -59,12 +59,13 @@ if (!EG) {
                 url: '/analyse',
                 type: 'post',
                 data: formData,
-                dataType: "json",
                 success: function(data) {
-                    $('#loading_modal').modal('close');
-                    $('#analysis_results').show();
                     console.log(data);
-                    EG.produceResults(data);
+                    $('#loading_modal').modal('close');
+                    $('#analysis_results').html(data);
+                    $('#analysis_results').show();
+                    $('.collapsible').collapsible();
+                    $('.materialboxed').materialbox();
                     $("html, body").animate({
                         scrollTop: $('#analysis_results').offset().top
                     });
@@ -191,20 +192,6 @@ if (!EG) {
             $("#loading_modal").modal("close"); // remove progress notification
         }
     };
-
-    EG.produceResults = function(data) {
-      console.log('Producing Results')
-        // $(".analyse_card").data("assets_path", data.assets_path);
-        // $(".analyse_card").data("result_uuid", data.uuid);
-        // $(".analyse_card").data("share-link", data.share_url);
-        // $("#open_in_new_btn").attr("href", data.results_url);
-        // var download_link = data.assets_path + "/relayer_results.zip";
-        // $("#download-all-results").data("download", download_link);
-        // EG.delete_result();
-        // EG.share_result();
-        // EG.remove_share();
-    };
-
 
     EG.addUserDropDown = function() {
         $(".dropdown-button").dropdown({
