@@ -31,11 +31,11 @@ module Eye2Gene
         init(params, user)
         run_analysis
         write_results_to_file(url)
-        { exit_code: @exit_code,
-          assets_path: "#{url}/eye2gene/users/#{@email}/#{@uniq_time}",
+        { assets_path: "#{url}/eye2gene/users/#{@email}/#{@uniq_time}",
           results_url: "#{url}/result/#{encode_email}/#{@uniq_time}",
           share_url: "#{url}/sh/#{encode_email}/#{@uniq_time}",
-          uuid: @uniq_time }
+          download_url: "#{url}/eye2gene/users/#{@email}/#{@uniq_time}/results.zip",
+          uuid: @uniq_time, results: @results }
       end
 
       private
@@ -72,11 +72,8 @@ module Eye2Gene
 
       def setup_run_dir
         @run_dir = File.join(users_dir, @email, @uniq_time)
-        @run_out_dir = File.join(@run_dir, 'out')
-        @run_files_dir = File.join(@run_dir, 'files')
         logger.debug("Creating Run Directory: #{@run_dir}")
-        FileUtils.mkdir_p(@run_files_dir)
-        FileUtils.mkdir_p(@run_out_dir)
+        FileUtils.mkdir_p(@run_dir)
         move_uploaded_files_into_run_dir
       end
 
@@ -84,28 +81,42 @@ module Eye2Gene
         @params[:files].each do |f|
           t_dir = File.join(tmp_dir, f[:uuid])
           t_input_file = File.join(t_dir, f[:originalName])
-          f = File.join(@run_files_dir, f[:originalName])
-          FileUtils.mv(t_input_file, f)
+          new_fname = f[:uuid] + File.extname(f[:originalName])
+          new_file = File.join(@run_dir, new_fname)
+          FileUtils.mv(t_input_file, new_file)
           next unless (Dir.entries(t_dir) - %w[. ..]).empty?
           FileUtils.rm_r(t_dir)
         end
       end
 
       def run_analysis
-        logger.debug("Running CMD: #{analysis_cmd}")
-        system(analysis_cmd)
-        @exit_code = $CHILD_STATUS.exitstatus
-        logger.debug("Matlab CMD Exit Code: #{@exit_code}")
+        @results = []
+        @params[:files].collect do |f|
+          r = {
+            file: f,
+            input_fname: "#{f[:uuid]}#{File.extname(f[:originalName])}",
+            json_file: File.join(@run_dir, "#{f[:uuid]}.json")
+          }
+          r[:exit_code] = run_analysis_cmd(r[:input_fname], r[:json_file])
+          next unless File.exist? r[:json_file]
+          json_data = File.read(r[:json_file])
+          r[:result_data] = JSON.parse(json_data, symbolize_names: true)
+          @results << r
+        end
       end
 
-      def analysis_cmd
-        "#{config[:analysis_script]} '#{file_names}' '#{@run_out_dir}/out.json'"
+      def run_analysis_cmd(input_fname, json_file)
+        input_file = File.join(@run_dir, input_fname)
+        cmd = analysis_cmd(input_file, json_file)
+        logger.debug("Running CMD: #{cmd}")
+        system(cmd)
+        exit_code = $CHILD_STATUS.exitstatus
+        logger.debug("CMD Exit Code: #{exit_code}")
+        exit_code
       end
 
-      def file_names
-        fnames = @params[:files].collect { |f| f[:originalName] }
-        return File.join(@run_files_dir, fnames[0]) if fnames.length == 1
-        @run_files_dir
+      def analysis_cmd(fname, json_file)
+        "#{config[:analysis_script]} '#{fname}' '#{json_file}'"
       end
 
       def write_results_to_file(url)
@@ -121,9 +132,10 @@ module Eye2Gene
           results_url: "#{url}/result/#{encode_email}/#{@uniq_time}",
           share_url: "#{url}/sh/#{encode_email}/#{@uniq_time}",
           assets_path: "#{url}/eye2gene/users/#{@email}/#{@uniq_time}",
+          download_url: "#{url}/eye2gene/users/#{@email}/#{@uniq_time}/results.zip",
           full_path: @run_dir,
           uniq_result_id: @uniq_time,
-          exit_code: @exit_code
+          results: @results
         }
       end
 
