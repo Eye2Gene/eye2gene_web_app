@@ -28,7 +28,7 @@ if (!EG) {
                 }
             },
             validation: {
-                allowedExtensions: ['dng','aai','pdf','art','mpeg','avs','bgr','jbig','bmp','braille','cals','xc','caption','cin','cip','clip','cmyk','cur','cut','dcm','pcx','dds','ttf','djvu','dot','dpx','ps','ps2','ps3','ept','exr','fax','fits','plasma','fts','gif','gradient','gray','tiff','hdr','hrz','html','tga','icon','info','inline','ipl','png','jnx*','jpeg','json','label','mac','map','mask','mat','matte','miff','mono','mpc','msl','svg','mtv','mvg','null','otb','uyvy','palm','pnm','pango','pattern','pcd','pcl','pict','pdb','pes','pfm','xpm','pix','preview','psd','pwp','sun','rgb','rgf','rla','rle','scr','sct','sfw','sgi','six','sixel','stegano','txt','tile','tim','uil','vicar','vid','viff','vips','wbmp','wmf','wmz','wpg','x','xbm','xcf','xps','xwd','ycbcr','yuv'],
+                allowedExtensions: ['aai', 'art', 'avs', 'bgr', 'bmp', 'braille', 'cals', 'caption', 'cin', 'cip', 'clip', 'cmyk', 'cur', 'cut', 'dcm', 'dds', 'djvu', 'dng', 'dot', 'dpx', 'ept', 'exr', 'fax', 'fits', 'fts', 'gif', 'gradient', 'gray', 'hdr', 'hrz', 'html', 'icon', 'info', 'inline', 'ipl', 'jbig', 'jnx*', 'jpeg', 'jpg', 'json', 'label', 'mac', 'map', 'mask', 'mat', 'matte', 'miff', 'mono', 'mpc', 'mpeg', 'msl', 'mtv', 'mvg', 'null', 'otb', 'palm', 'pango', 'pattern', 'pcd', 'pcl', 'pcx', 'pdb', 'pdf', 'pes', 'pfm', 'pict', 'pix', 'plasma', 'png', 'pnm', 'preview', 'ps', 'ps2', 'ps3', 'psd', 'pwp', 'rgb', 'rgf', 'rla', 'rle', 'scr', 'sct', 'sfw', 'sgi', 'six', 'sixel', 'stegano', 'sun', 'svg', 'tga', 'tif', 'tiff', 'tile', 'tim', 'ttf', 'txt', 'uil', 'uyvy', 'vicar', 'vid', 'viff', 'vips', 'wbmp', 'wmf', 'wmz', 'wpg', 'x', 'xbm', 'xc', 'xcf', 'xpm', 'xps', 'xwd', 'ycbcr', 'yuv'],
                 itemLimit: 500,
                 sizeLimit: 78650000 // 75MB
             },
@@ -47,6 +47,18 @@ if (!EG) {
 
     EG.initSubmit = function() {
         $('#analysis_btn').on('click', function() {
+            // check if at least one file has been uploaded
+            if ($.isEmptyObject(RL.fineUploader.getUploads())) {
+                $('.validation_text').text('Please upload a file first.');
+                return false;
+            }
+
+            // Check if some files are still running
+            if (RL.fineUploader.getInProgress() !== 0) {
+                $('.validation_text').text('Please wait until all the files have completely uploaded.');
+                return false;
+            }
+
             $('#loading_modal').modal('open');
             $('#modal_header_text').text('Running Analysis');
             $('#modal_text').text('This should take a few minutes. Please leave this page open');
