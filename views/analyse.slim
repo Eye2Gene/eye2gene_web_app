@@ -12,7 +12,7 @@
           - else
             input type="hidden" name="user" value="#{Base64.encode64(session[:user].info['email']).chomp}"
         .col.s12
-          .validation_text.red-text style="font-size: .8rem"
+          .validation_text.red-text
         a#analysis_btn.waves-effect.waves-light.btn.btn-large.right.light-blue.darken-3
           i.material-icons.right cloud
           | Analyse
