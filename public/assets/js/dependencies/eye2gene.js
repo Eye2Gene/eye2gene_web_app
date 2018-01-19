@@ -48,7 +48,7 @@ if (!EG) {
     EG.initSubmit = function() {
         $('#analysis_btn').on('click', function() {
             // check if at least one file has been uploaded
-            if ($.isEmptyObject(RL.fineUploader.getUploads())) {
+            if ($.isEmptyObject(EG.fineUploader.getUploads())) {
                 $('.validation_text').text('Please upload a file first.');
                 return false;
             }
