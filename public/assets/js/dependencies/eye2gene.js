@@ -58,6 +58,7 @@ if (!EG) {
                 $('.validation_text').text('Please wait until all the files have completely uploaded.');
                 return false;
             }
+            $('.validation_text').text('');
 
             $('#loading_modal').modal('open');
             $('#modal_header_text').text('Running Analysis');
