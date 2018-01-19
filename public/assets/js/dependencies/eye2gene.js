@@ -54,7 +54,7 @@ if (!EG) {
             }
 
             // Check if some files are still running
-            if (RL.fineUploader.getInProgress() !== 0) {
+            if (EG.fineUploader.getInProgress() !== 0) {
                 $('.validation_text').text('Please wait until all the files have completely uploaded.');
                 return false;
             }
