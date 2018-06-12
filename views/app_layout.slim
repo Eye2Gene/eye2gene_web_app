@@ -35,6 +35,10 @@ html lang="en"
               a.white-text.modal-trigger href="#login_modal"  My Results
             - else
               a.white-text href="#{base_url}/my_results"  My Results
+          li class=('active' if uri =~ %r{ppi} )
+            a.white-text href="#{base_url}/ppi"  PPI 
+          li class=('active' if uri =~ %r{about} )
+            a.white-text href="#{base_url}/about"  About
         ul#dropdown_menu.right.hide-on-med-and-down
           - if ! session[:user].nil?
             li.user data-user="#{Base64.encode64(session[:user].info['email']).chomp}"

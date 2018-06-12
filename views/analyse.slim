@@ -1,10 +1,22 @@
 #analysis_container.container
   .section
-    h1.light-blue-text.text-darken-3 Eye2Gene
+    h4.light-blue-text.text-darken-3 Genetic prediction of inherited retinal disease using AI
     .card.analyse_card
       .card-content
-        span.card-title.light-blue-text.text-darken-3 File Upload
-        p.lead Please upload your autofluorescence retinal images below.
+        span.card-title.light-blue-text.text-darken-3 Retinal Image Upload
+        p.lead Please upload your autofluorescence retinal images below, we accept jpeg, tiff and png:
+        .file_space#fine-uploader-validation
+        form#eye2gene_analysis
+          - if session[:user].nil?
+            input type="hidden" name="user" value="#{Base64.encode64('eye2gene').chomp}"
+          - else
+            input type="hidden" name="user" value="#{Base64.encode64(session[:user].info['email']).chomp}"
+        .col.s12
+          .validation_text.red-text
+    .card.analyse_card
+      .card-content
+        span.card-title.light-blue-text.text-darken-3 Genetics Upload
+        p.lead Please upload your VCF file here:
         .file_space#fine-uploader-validation
         form#eye2gene_analysis
           - if session[:user].nil?
