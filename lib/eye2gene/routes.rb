@@ -218,6 +218,14 @@ module Eye2Gene
       redirect '/oct_segmentation'
     end
 
+    get '/about' do
+        slim :about, layout: :app_layout
+    end
+
+    get '/ppi' do
+        slim :ppi, layout: :app_layout
+    end
+
     post '/auth/:provider/callback' do
       content_type :json
       session[:user] = env['omniauth.auth']
