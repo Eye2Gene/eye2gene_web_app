@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    Eye2Gene (0.0.5)
+    Eye2Gene (0.0.6)
       awesome_print (~> 1.8)
       passenger (~> 5.1)
       pry (~> 0.11)
