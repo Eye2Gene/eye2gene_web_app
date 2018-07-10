@@ -16,32 +16,6 @@ Feel free to give us a shout on the github issues, if you would like more help t
 
 ### App Installation
 
-Simply run the following command in the terminal.
-
-```bash
-# Clone the repository.
-git clone https://github.com/Eye2Gene/eye2gene_web_app
-
-# Move into Eye2Gene source directory.
-cd eye2gene_web_app
-
-# Initialize and update Submodule
-git submodule update --init --recursive
-
-# Install Bundler
-gem install bundler
-
-# Build and install the latest version of the webapp.
-rake install
-
-# Start the web app
-eye2gene
-```
-
-#### Running From Source (Not Recommended)
-
-It is also possible to run from source. However, this is not recommended.
-
 ```bash
 # After cloning the web app and moving into the source directory
 # Install bundler
@@ -55,6 +29,7 @@ bundle exec eye2gene -h
 # note that `bundle exec` executes eye2gene in the context of the bundle
 
 # Alternatively run eye2gene using Phusion Passenger
+# Mainly for production
 bundle exec passenger start -h
 ```
 
@@ -63,6 +38,12 @@ bundle exec passenger start -h
 To configure and launch eye2gene, run the following from a command line from the eye2gene root folder.
 
 ```bash
+# Run eye2gene
+bundle exec eye2gene -h
+# note that `bundle exec` executes eye2gene in the context of the bundle
+
+# Alternatively run eye2gene using Phusion Passenger
+# Mainly for production
 bundle exec passenger start -h
 ```
 
