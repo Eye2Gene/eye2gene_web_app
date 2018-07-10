@@ -193,6 +193,11 @@ p#disclaimer {
     will-change: width, height;
 }
 
+.autocomplete-content.dropdown-content  {
+    width: auto !important;
+    z-index: 10 !important;
+}
+
 #analysis_container {
     .dropdown-content.select-dropdown {
         z-index: 999;
@@ -225,3 +230,14 @@ p#disclaimer {
   }
 }
 
+
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+    background-color: transparent;
+}
+
+
+.chips .input {
+    width: 350px !important;
+}

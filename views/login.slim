@@ -1,0 +1,23 @@
+center style="margin-top:100px;"
+  img.responsive-img src="#{uri('assets/img/logo_black.min.svg')}" alt="Eye2Gene Logo" style=("width: 150px;") /
+  h1.teal-text.text-darken-1 style="margin-top:10px" Eye2Gene
+  .container
+    .z-depth-1.grey.lighten-4.row style=("display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;") 
+      h5.teal-text.text-darken-1  Enter your login details.
+      form.col.s12 method="post" action="/login"
+        .row
+          .input-field.col.s12
+            input#email.validate autocomplete="off" name="email" type="email" /
+            label for="email"  Enter your email
+        .row
+          .input-field.col.s12
+            input#password.validate autocomplete="off" name="password"  type="password" /
+            label for="password"  Enter your password
+          label style=("float: right;") 
+            a.teal-text href="#!" 
+              b Forgot Password?
+        br/
+        center
+          .row
+            button.col.s12.btn.btn-large.waves-effect.teal name="btn_login" type="submit"  Login
+  a href="#!" Create account

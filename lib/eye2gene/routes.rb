@@ -1,8 +1,6 @@
 require 'base64'
 require 'English'
 require 'json'
-require 'omniauth'
-require 'omniauth-google-oauth2'
 require 'sinatra/base'
 require 'slim'
 require 'slim/smart'
@@ -37,12 +35,6 @@ module Eye2Gene
 
       # Use Rack::Session::Pool over Sinatra default sessions.
       use Rack::Session::Pool, expire_after: 2_592_000 # 30 days
-
-      # Provide OmniAuth the Google Key and Secret Key for Authentication
-      use OmniAuth::Builder do
-        provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'],
-                 provider_ignores_state: true, verify_iss: false
-      end
 
       # view directory will be found here.
       set :root, -> { Eye2Gene.root }
@@ -105,22 +97,20 @@ module Eye2Gene
     end
 
     get '/analyse' do
+      redirect to('/login') if session[:user].nil?
       slim :analyse, layout: :app_layout
     end
 
     get '/my_results' do
-      redirect to('auth/google_oauth2') if session[:user].nil?
-      @my_results = History.run(session[:user].info['email'])
+      redirect to('/login') if session[:user].nil?
+      @my_results = History.run(session[:email])
       slim :my_results, layout: :app_layout
     end
 
     # Individual Result Pages
     get '/result/:encoded_email/:time' do
+      redirect to('/login') if session[:user].nil?
       email = Base64.decode64(params[:encoded_email])
-      if session[:user].nil? && email != 'eye2gene' ||
-         email != session[:user].info['email']
-        redirect to('auth/google_oauth2')
-      end
       json_file = File.join(Eye2Gene.public_dir, 'eye2gene/users/', email,
                             params['time'], 'params.json')
       @results = File.exist? json_file ? JSON.parse(IO.read(json_file)) : {}
@@ -129,6 +119,7 @@ module Eye2Gene
 
     # Shared Result Pages (Can be viewed without logging in)
     get '/sh/:encoded_email/:time' do
+      redirect to('/login') if session[:user].nil?
       email     = Base64.decode64(params[:encoded_email])
       json_file = File.join(Eye2Gene.public_dir, 'eye2gene/share/', email,
                             params['time'], 'params.json')
@@ -136,26 +127,22 @@ module Eye2Gene
       slim :single_result, layout: :app_layout
     end
 
-    # get '/exemplar_results' do
-    #   exemplar_results = Eye2Gene.exemplar_results
-    #   json_file = File.join(Eye2Gene.public_dir, 'eye2gene/users/',
-    #                         exemplar_results, 'params.json')
-    #   @results  = JSON.parse(IO.read(json_file))
-    #   slim :single_result, layout: :app_layout
-    # end
 
     get '/faq' do
+      redirect to('/login') if session[:user].nil?
       slim :work_in_progress, layout: :app_layout
     end
 
     # Run the Eye2Gene Analysis
     post '/analyse' do
+      redirect to('/login') if session[:user].nil?
       email = Base64.decode64(params[:user])
       @data = Eye2GeneAnalysis.run(params, email, base_url)
       slim :result, layout: false
     end
 
     post '/upload' do
+      redirect to('/login') if session[:user].nil?
       dir = File.join(Eye2Gene.tmp_dir, params[:qquuid])
       FileUtils.mkdir(dir) unless File.exist?(dir)
       fname = params[:qqfilename].to_s
@@ -165,6 +152,7 @@ module Eye2Gene
     end
 
     post '/upload_done' do
+      redirect to('/login') if session[:user].nil?
       parts = params[:qqtotalparts].to_i - 1
       fname = params[:qqfilename]
       dir   = File.join(Eye2Gene.tmp_dir, params[:qquuid])
@@ -180,6 +168,7 @@ module Eye2Gene
 
     # Create a share link for a result page
     post '/sh/:encoded_email/:time' do
+      redirect to('/login') if session[:user].nil?
       email = Base64.decode64(params[:encoded_email])
       analysis = File.join(Eye2Gene.users_dir, email, params['time'])
       share    = File.join(Eye2Gene.public_dir, 'eye2gene/share', email)
@@ -191,6 +180,8 @@ module Eye2Gene
 
     # Remove a share link of a result page
     post '/rm/:encoded_email/:time' do
+      redirect to('/login') if session[:user].nil?
+
       email = Base64.decode64(params[:encoded_email])
       share = File.join(Eye2Gene.public_dir, 'eye2gene/share', email,
                         params['time'])
@@ -201,54 +192,45 @@ module Eye2Gene
 
     # Delete a Results Page
     post '/delete_result' do
-      email = session[:user].nil? ? 'eye2gene' : session[:user].info['email']
+      redirect to('/login') if session[:user].nil?
+      email = session[:email]
       results_dir = File.join(Eye2Gene.users_dir, email, params['uuid'])
       FileUtils.rm_r(results_dir)
     end
 
-    get '/auth/:provider/callback' do
-      content_type 'text/plain'
-      session[:user] = env['omniauth.auth']
-      user_dir    = File.join(Eye2Gene.users_dir, session[:user].info['email'])
-      user_public = File.join(Eye2Gene.public_dir, 'eye2gene/users')
-      FileUtils.mkdir(user_dir) unless Dir.exist?(user_dir)
-      unless File.exist? File.join(user_public, session[:user].info['email'])
-        FileUtils.ln_s(user_dir, user_public)
-      end
-      redirect '/oct_segmentation'
-    end
-
     get '/about' do
-        slim :about, layout: :app_layout
+      redirect to('/login') if session[:user].nil?
+      slim :about, layout: :app_layout
     end
 
     get '/ppi' do
-        slim :ppi, layout: :app_layout
+      redirect to('/login') if session[:user].nil?
+      slim :ppi, layout: :app_layout
     end
 
-    post '/auth/:provider/callback' do
-      content_type :json
-      session[:user] = env['omniauth.auth']
-      user_dir    = File.join(Eye2Gene.users_dir, session[:user].info['email'])
-      user_public = File.join(Eye2Gene.public_dir, 'eye2gene/users')
-      FileUtils.mkdir(user_dir) unless Dir.exist?(user_dir)
-      unless File.exist? File.join(user_public, session[:user].info['email'])
-        FileUtils.ln_s(user_dir, user_public)
+    get '/login' do
+      slim :login, layout: :app_layout
+    end
+
+    post '/login' do
+      if params[:password] == 'eye2genedemo'
+        session[:user] = 'eye2gene'
+        session[:email] = 'eye2gene'
       end
-      env['omniauth.auth'].to_json
+      redirect to('/analyse')
     end
 
     get '/logout' do
       user_public_dir = File.join(Eye2Gene.public_dir, 'eye2gene/users',
-                                  session[:user].info['email'])
+                                  session[:email])
       FileUtils.rm(user_public_dir)
       session[:user] = nil
-      redirect '/oct_segmentation'
+      redirect '/login'
     end
 
     get '/auth/failure' do
       session[:user] = nil
-      redirect '/oct_segmentation'
+      redirect '/login'
     end
 
     # Recaptcha

@@ -24,10 +24,6 @@ gem install bundler
 # Use bundler to install dependencies
 bundle install
 
-# Run eye2gene
-bundle exec eye2gene -h
-# note that `bundle exec` executes eye2gene in the context of the bundle
-
 # Alternatively run eye2gene using Phusion Passenger
 # Mainly for production
 bundle exec passenger start -h
@@ -38,14 +34,24 @@ bundle exec passenger start -h
 To configure and launch eye2gene, run the following from a command line from the eye2gene root folder.
 
 ```bash
-# Run eye2gene
-bundle exec eye2gene -h
-# note that `bundle exec` executes eye2gene in the context of the bundle
-
-# Alternatively run eye2gene using Phusion Passenger
-# Mainly for production
 bundle exec passenger start -h
 ```
+
+### Development Mode
+
+Start Eye2Gene with `bundle exec` - which executes eye2gene in the context of the bundle - i.e so you don't need to keep reinstalling
+
+```
+# Run eye2gene
+bundle exec eye2gene -D
+```
+
+To re-compile the assets, run:
+
+```sh
+bundle exec rake assets
+```
+
 
 That's it! Open [http://localhost:3000/](http://localhost:3000/) and start using eye2gene!
 

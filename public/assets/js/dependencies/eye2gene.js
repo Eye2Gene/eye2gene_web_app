@@ -16,7 +16,7 @@ if (!EG) {
 (function() {
     EG.initFineUploader = function() {
         EG.fineUploader = new qq.FineUploader({
-            element: $('#fine-uploader-validation')[0],
+            element: $('#retinal_image_upload_fine_uploader')[0],
             template: 'qq-template-validation',
             request: {
                 endpoint: '/upload'
@@ -42,7 +42,33 @@ if (!EG) {
                 }
             }
         });
-        EG.fineUploader.addExtraDropzone($(".drop_zone_container")[0]);
+        EG.genetic_fineUploader = new qq.FineUploader({
+            element: $('#genetic_upload_fine_uploader')[0],
+            template: 'qq-template-validation',
+            request: {
+                endpoint: '/upload'
+            },
+            thumbnails: {
+                placeholders: {
+                    waitingPath: '/assets/img/fine-uploader/placeholders/waiting-generic.png',
+                    notAvailablePath: '/assets/img/fine-uploader/placeholders/not_available-generic.png'
+                }
+            },
+            validation: {
+                allowedExtensions: ['aai', 'art', 'avs', 'bgr', 'bmp', 'braille', 'cals', 'caption', 'cin', 'cip', 'clip', 'cmyk', 'cur', 'cut', 'dcm', 'dds', 'djvu', 'dng', 'dot', 'dpx', 'ept', 'exr', 'fax', 'fits', 'fts', 'gif', 'gradient', 'gray', 'hdr', 'hrz', 'html', 'icon', 'info', 'inline', 'ipl', 'jbig', 'jnx*', 'jpeg', 'jpg', 'json', 'label', 'mac', 'map', 'mask', 'mat', 'matte', 'miff', 'mono', 'mpc', 'mpeg', 'msl', 'mtv', 'mvg', 'null', 'otb', 'palm', 'pango', 'pattern', 'pcd', 'pcl', 'pcx', 'pdb', 'pdf', 'pes', 'pfm', 'pict', 'pix', 'plasma', 'png', 'pnm', 'preview', 'ps', 'ps2', 'ps3', 'psd', 'pwp', 'rgb', 'rgf', 'rla', 'rle', 'scr', 'sct', 'sfw', 'sgi', 'six', 'sixel', 'stegano', 'sun', 'svg', 'tga', 'tif', 'tiff', 'tile', 'tim', 'ttf', 'txt', 'uil', 'uyvy', 'vicar', 'vid', 'viff', 'vips', 'wbmp', 'wmf', 'wmz', 'wpg', 'x', 'xbm', 'xc', 'xcf', 'xpm', 'xps', 'xwd', 'ycbcr', 'yuv'],
+                itemLimit: 500,
+                sizeLimit: 78650000 // 75MB
+            },
+            chunking: {
+                enabled: true,
+                concurrent: {
+                    enabled: true
+                },
+                success: {
+                    endpoint: "/upload_done"
+                }
+            }
+        });
     };
 
     EG.initSubmit = function() {
@@ -207,55 +233,15 @@ if (!EG) {
     };
 
     EG.addUserDropDown = function() {
-        $(".dropdown-button").dropdown({
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var options = {
             inDuration: 300,
             outDuration: 225,
             hover: true,
-            belowOrigin: true,
+            coverTrigger: false,
             alignment: "right"
-        });
-    };
-
-    EG.setupGoogleAuthentication = function() {
-        gapi.auth.authorize({
-            immediate: true,
-            response_type: "code",
-            cookie_policy: "single_host_origin",
-            client_id: EG.CLIENT_ID,
-            scope: "email"
-        });
-        $(".login_button").on("click", function(e) {
-            e.preventDefault();
-            /** global: gapi */
-            gapi.auth.authorize({
-                    immediate: false,
-                    response_type: "code",
-                    cookie_policy: "single_host_origin",
-                    client_id: EG.CLIENT_ID,
-                    scope: "email"
-                },
-                function(response) {
-                    if (response && !response.error) {
-                        // google authentication succeed, now post data to server.
-                        jQuery.ajax({
-                            type: "POST",
-                            url: "/auth/google_oauth2/callback",
-                            data: response,
-                            success: function() {
-                                // TODO - just update the DOM instead of a redirect
-                                $(location).attr(
-                                    "href",
-                                    EG.protocol() + window.location.host + "/oct_segmentation"
-                                );
-                            }
-                        });
-                    } else {
-                        console.log("ERROR Response google authentication failed");
-                        // TODO: ERROR Response google authentication failed
-                    }
-                }
-            );
-        });
+        };
+        var instances = M.Dropdown.init(elems, options);
     };
 
     EG.protocol = function() {
@@ -301,20 +287,8 @@ if (!EG) {
 
     $(function() {
         $(".modal").modal();
-        $("select").material_select();
-        $(".button-collapse").sideNav();
+        $('.sidenav').sidenav();
         EG.addUserDropDown();
     });
 
-    $(function() {
-        return $.ajax({
-            url: "https://apis.google.com/js/client:plus.js?onload=gpAsyncInit",
-            dataType: "script",
-            cache: true
-        });
-    });
-
-    window.gpAsyncInit = function() {
-        EG.setupGoogleAuthentication();
-    };
 })(jQuery);

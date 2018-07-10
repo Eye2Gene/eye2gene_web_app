@@ -3,31 +3,70 @@
     h4.light-blue-text.text-darken-3 Genetic prediction of inherited retinal disease using AI
     .card.analyse_card
       .card-content
-        span.card-title.light-blue-text.text-darken-3 Retinal Image Upload
-        p.lead Please upload your autofluorescence retinal images below, we accept jpeg, tiff and png:
-        .file_space#fine-uploader-validation
+        span.card-title.light-blue-text.text-darken-3 Input Data
         form#eye2gene_analysis
-          - if session[:user].nil?
-            input type="hidden" name="user" value="#{Base64.encode64('eye2gene').chomp}"
-          - else
-            input type="hidden" name="user" value="#{Base64.encode64(session[:user].info['email']).chomp}"
-        .col.s12
-          .validation_text.red-text
-    .card.analyse_card
-      .card-content
-        span.card-title.light-blue-text.text-darken-3 Genetics Upload
-        p.lead Please upload your VCF file here:
-        .file_space#fine-uploader-validation
-        form#eye2gene_analysis
-          - if session[:user].nil?
-            input type="hidden" name="user" value="#{Base64.encode64('eye2gene').chomp}"
-          - else
-            input type="hidden" name="user" value="#{Base64.encode64(session[:user].info['email']).chomp}"
-        .col.s12
-          .validation_text.red-text
-        a#analysis_btn.waves-effect.waves-light.btn.btn-large.right.light-blue.darken-3
-          i.material-icons.right cloud
-          | Analyse
-        .clearfix
+          input type="hidden" name="user" value="#{Base64.encode64(session[:user]).chomp}"
+          .row
+            .col.s12
+              ul#input_tabs.tabs
+                li.tab.col.s4.active
+                  a.light-blue-text.text-darken-3.active href="#retinal_image_upload"  Retinal Image Upload
+                li.tab.col.s4
+                  a.light-blue-text.text-darken-3 href="#genetics_uploads"  Genetics Upload
+                li.tab.col.s4
+                  a.light-blue-text.text-darken-3 href="#patient_symptoms"  Patient Symptoms
+          #retinal_image_upload
+            span.card-title.light-blue-text.text-darken-3   Retinal Image Uploads
+            p.lead Please upload your autofluorescence retinal images below, we accept jpeg, tiff and png:
+            .file_space#retinal_image_upload_fine_uploader
+            .col.s12
+              .validation_text.red-text
+          #genetics_uploads style="display: none;"
+            span.card-title.light-blue-text.text-darken-3 Genetics Upload
+            p.lead Please upload your VCF file here:
+            .file_space#genetic_upload_fine_uploader
+            .col.s12
+              .validation_text.red-text
+          #patient_symptoms style="display: none;"
+            span.card-title.light-blue-text.text-darken-3 Patient Symptoms
+            p.lead Please enter patient symtoms as HPO terms
+            .chips.chips-autocomplete
+          .clearfix
+          a#analysis_btn.waves-effect.waves-light.btn.btn-large.right.light-blue.darken-3 style="margin-top:20px;"
+            i.material-icons.right send
+            | Analyse
+          .clearfix
 
     #analysis_results style="display:none;"
+
+
+javascript:
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.chips');
+    var options = {
+      placeholder: 'Start writing to show related HPO terms',
+      secondaryPlaceholder: '+Add another HPO term',
+      autocompleteOptions: {
+        data: {
+          'HP:0001133 - Constriction of peripheral visual field': null,
+          'HP:0000365 - Hearing impairment': null,
+          'HP:0000478 - Abnormality of the eye': null,
+          'HP:0012372 - Abnormal eye morphology': null,
+          'HP:0012373 - Abnormal eye physiology': null,
+          'HP:0000492 - Abnormality of the eyelid': null,
+          'HP:0000496 - Abnormality of eye movement': null,
+          'HP:0008047 - Abnormality of the vasculature of the eye': null,
+          'HP:0008056 - Aplasia/Hypoplasia affecting the eye': null,
+          'HP:0000499 - Abnormality of the eyelashes': null,
+          'HP:0012547 - Abnormal involuntary eye movements': null
+        },
+        limit: Infinity,
+        minLength: 1
+      }
+    };
+    var instances = M.Chips.init(elems, options);
+    var input_tabs = M.Tabs.init(document.getElementById("input_tabs"),);
+    input_tabs.select('retinal_image_upload');
+
+  });
+

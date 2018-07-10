@@ -1,6 +1,7 @@
 @charset "UTF-8";
-// Colors
-@import "materialize/color";
+// Color
+@import "materialize/color-variables";
+@import "materialize/color-classes";
 // Variables;
 @import "materialize/variables";
 // Reset
@@ -11,7 +12,6 @@
 @import "materialize/icons-material-design";
 @import "materialize/grid";
 @import "materialize/navbar";
-// @import "materialize/roboto";
 @import "materialize/typography";
 @import "materialize/transitions";
 @import "materialize/cards";
@@ -27,15 +27,14 @@
 @import "materialize/materialbox";
 @import "materialize/forms/forms";
 @import "materialize/table_of_contents";
-@import "materialize/sideNav";
+@import "materialize/sidenav";
 @import "materialize/preloader";
 @import "materialize/slider";
 @import "materialize/carousel";
 @import "materialize/tapTarget";
 @import "materialize/pulse";
-@import "materialize/date_picker/default";
-@import "materialize/date_picker/default.date";
-@import "materialize/date_picker/default.time";
+@import "materialize/datepicker";
+@import "materialize/timepicker";
 // NoUISlider Custom Style
 @import "nouislider";
 // FineUploader Custom Style

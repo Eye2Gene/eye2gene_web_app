@@ -7,65 +7,65 @@ html lang="en"
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
     link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"
     link type="text/css" rel="stylesheet"  href="#{uri('assets/css/style-' + Eye2Gene::VERSION + '.min.css')}"
-
-    javascript:
-      !function(e){"use strict";var n=function(n,t,i){function o(e){return r.body?e():void setTimeout(function(){o(e)})}var d,r=e.document,a=r.createElement("link"),l=i||"all";if(t)d=t;else{var f=(r.body||r.getElementsByTagName("head")[0]).childNodes;d=f[f.length-1]}var s=r.styleSheets;a.rel="stylesheet",a.href=n,a.media="only x",o(function(){d.parentNode.insertBefore(a,t?d:d.nextSibling)});var u=function(e){for(var n=a.href,t=s.length;t--;)if(s[t].href===n)return e();setTimeout(function(){u(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=l}),a.onloadcssdefined=u,u(function(){a.media!==l&&(a.media=l)}),a};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
+    / javascript:
+      // !function(e){"use strict";var n=function(n,t,i){function o(e){return r.body?e():void setTimeout(function(){o(e)})}var d,r=e.document,a=r.createElement("link"),l=i||"all";if(t)d=t;else{var f=(r.body||r.getElementsByTagName("head")[0]).childNodes;d=f[f.length-1]}var s=r.styleSheets;a.rel="stylesheet",a.href=n,a.media="only x",o(function(){d.parentNode.insertBefore(a,t?d:d.nextSibling)});var u=function(e){for(var n=a.href,t=s.length;t--;)if(s[t].href===n)return e();setTimeout(function(){u(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=l}),a.onloadcssdefined=u,u(function(){a.media!==l&&(a.media=l)}),a};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
       // loadCSS( "https://fonts.googleapis.com/icon?family=Material+Icons" );
       // loadCSS( "https://fonts.googleapis.com/css?family=Roboto:400,700" );
       // loadCSS( "#{uri('assets/css/style-' + Eye2Gene::VERSION + '.min.css')}" );
-    noscript
+    /noscript
       link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
       link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"
       link type="text/css" rel="stylesheet"  href="#{uri('assets/css/style-' + Eye2Gene::VERSION + '.min.css')}"
   body.app
     .drop_zone_container qq-hide-dropzone="" qq-drop-area-text="Drop OCT Scans Here"
-    nav
-      .nav-wrapper
-        span.hide-on-med-and-down.logo
-          img height="50" src="#{uri('assets/img/logo_white.min.svg')}" alt="Eye2Gene Logo"
-          a#logo-container.brand-logo.white-text href="#{base_url}"
+    .navbar-fixed
+      nav
+        .nav-wrapper
+          span.hide-on-med-and-down.logo
+            img height="50" src="#{uri('assets/img/logo_white.min.svg')}" alt="Eye2Gene Logo"
+            a#logo-container.brand-logo.white-text href="#{base_url}"
+              | &nbsp;Eye2Gene
+          a#logo-container.brand-logo.white-text.hide-on-large-only href="#{base_url}"
             | &nbsp;Eye2Gene
-        a#logo-container.brand-logo.white-text.hide-on-large-only href="#{base_url}"
-          | &nbsp;Eye2Gene
-        ul.hide-on-med-and-down.navbar_centered
-          li class=('active' if uri =~ %r{analyse} )
-            a.white-text href="#{base_url}/analyse"  Analyse
-          li class=('active' if uri =~ %r{/my_results} )
-            - if session[:user].nil?
-              a.white-text.modal-trigger href="#login_modal"  My Results
+          a.sidenav-trigger href="#" data-target="side_menu"
+            i.material-icons menu
+          ul.hide-on-med-and-down.navbar_centered
+            li class=('active' if uri =~ %r{analyse} )
+              a.white-text href="#{base_url}/analyse"  Analyse
+            li class=('active' if uri =~ %r{/my_results} )
+              - if session[:user].nil?
+                a.white-text.modal-trigger href="#login_modal"  My Results
+              - else
+                a.white-text href="#{base_url}/my_results"  My Results
+            li class=('active' if uri =~ %r{ppi} )
+              a.white-text href="#{base_url}/ppi"  PPI 
+            li class=('active' if uri =~ %r{about} )
+              a.white-text href="#{base_url}/about"  About
+          ul#dropdown_menu.right.hide-on-med-and-down
+            - if ! session[:user].nil?
+              li.user data-user="#{Base64.encode64(session[:email]).chomp}"
+                a.white-text.dropdown-trigger href="#!" data-target="user_menu_dropdown" data-beloworigin="true"
+                  i.material-icons.right> perm_identity
+                  span#name.left
+                    | #{session[:user].capitalize}
+                  .clearfix
             - else
-              a.white-text href="#{base_url}/my_results"  My Results
-          li class=('active' if uri =~ %r{ppi} )
-            a.white-text href="#{base_url}/ppi"  PPI 
-          li class=('active' if uri =~ %r{about} )
-            a.white-text href="#{base_url}/about"  About
-        ul#dropdown_menu.right.hide-on-med-and-down
-          - if ! session[:user].nil?
-            li.user data-user="#{Base64.encode64(session[:user].info['email']).chomp}"
-              a.white-text.dropdown-button href="#!" data-activates="user_menu_dropdown" data-beloworigin="true"
-                span#name.left
-                  | #{session[:user].info['first_name']}
-                img.circle.profile_img.right alt="Profile Picture" style="height: 45px;" src="#{session[:user].info['image']}"/
-                .clearfix
-          - else
-            li
-              a.login_button.white-text
-                i.material-icons.right> perm_identity
-                | Login
-        .container
-          a.button-collapse data-activates="nav-mobile" href="#"
-            i.material-icons.white-text menu
-        ul#nav-mobile.side-nav
-          li
-            a href="#{base_url}/"  Analyse
-          li
-            a href="#{base_url}/my_results"  My Results
-          - if ! session[:user].nil?
-            li
-              a href="#{base_url}/logout"  Logout
-          - else
-            li
-              a.login_button  Login
+              li
+                a.login_button.white-text
+                  i.material-icons.right> perm_identity
+                  | Login
+
+    ul#side_menu.sidenav
+      li
+        a href="#{base_url}/"  Analyse
+      li
+        a href="#{base_url}/my_results"  My Results
+      - if ! session[:user].nil?
+        li
+          a href="#{base_url}/logout"  Logout
+      - else
+        li
+          a.login_button  Login
 
     == yield
 
@@ -129,7 +129,7 @@ html lang="en"
         a.login_button.waves-effect.waves-green.btn-flat  Login
 
     script src="https://code.jquery.com/jquery-3.2.1.min.js"
-    script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"
     script src="https://cdn.plot.ly/plotly-latest.min.js"
     script#qq-template-validation type="text/template"
       .qq-uploader-selector.qq-uploader qq-drop-area-text=("Drop files here")
@@ -178,16 +178,8 @@ html lang="en"
       script src="#{uri('assets/js/dependencies/nouislider.js')}"
       script src="#{uri('assets/js/dependencies/eye2gene.js')}"
     javascript:
-      EG.CLIENT_ID = "#{ENV['GOOGLE_KEY']}"
       EG.USING_SLL = "#{Eye2Gene.ssl?}"
-      // $(function() {
-        // return $.ajax({
-          // url: 'https://apis.google.com/js/client:plus.js?onload=gpAsyncInit',
-          // dataType: 'script',
-          // cache: true
-        // });
-      // });
-    - if request.path_info =~ %r{^/}
+    - if request.path_info =~ %r{^/} && request.path_info !~ %r{^/login}
       javascript:
         $(function() {
           $('#loading_modal').modal({ dismissible: false });
