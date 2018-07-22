@@ -199,7 +199,6 @@ module Eye2Gene
     end
 
     get '/about' do
-      redirect to('/login') if session[:user].nil?
       slim :about, layout: :app_layout
     end
 
