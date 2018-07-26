@@ -203,7 +203,6 @@ module Eye2Gene
     end
 
     get '/ppi' do
-      redirect to('/login') if session[:user].nil?
       slim :ppi, layout: :app_layout
     end
 
