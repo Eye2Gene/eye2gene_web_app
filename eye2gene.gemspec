@@ -1,4 +1,6 @@
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'eye2gene/version'
 
@@ -31,17 +33,17 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sinatra', '~>2.0'
   spec.add_dependency 'slim', '~>3.0'
   spec.add_dependency 'slop', '~>3.6'
-  spec.post_install_message = <<INFO
+  spec.post_install_message = <<~INFO
 
-------------------------------------------------------------------------
-  Thank you for Installing Eye2Gene!
+    ------------------------------------------------------------------------
+      Thank you for Installing Eye2Gene!
 
-  To launch Eye2Gene execute 'eye2gene' from command line.
+      To launch Eye2Gene execute 'eye2gene' from command line.
 
-    $ eye2gene [options]
+        $ eye2gene [options]
 
-  Visit https://github.com/Eye2Gene/eye2gene_web_app for more information.
-------------------------------------------------------------------------
+      Visit https://github.com/Eye2Gene/eye2gene_web_app for more information.
+    ------------------------------------------------------------------------
 
-INFO
+  INFO
 end

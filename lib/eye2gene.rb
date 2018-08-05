@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 require 'json'
 require 'yaml'
@@ -185,7 +187,7 @@ module Eye2Gene
       return if using_ssh? || verbose?
       if RUBY_PLATFORM =~ /linux/ && xdg?
         system "xdg-open #{url}"
-      elsif RUBY_PLATFORM =~ /darwin/
+      elsif RUBY_PLATFORM.match?(/darwin/)
         system "open #{url}"
       end
     end
