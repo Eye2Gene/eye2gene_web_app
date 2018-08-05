@@ -105,10 +105,7 @@ if (!EG) {
                     $('#analysis_results').show();
                     $('.collapsible').collapsible();
                     $('.materialboxed').materialbox();
-                    $('.carousel.carousel-slider').carousel({
-                        fullWidth: true,
-                        indicators: true
-                    });
+                    EG.initSlider();
                     $("html, body").animate({
                         scrollTop: $('#analysis_results').offset().top
                     });
@@ -118,6 +115,26 @@ if (!EG) {
                     console.log(xhr);
                 }
             });
+        });
+    };
+
+    EG.initSlider = function() {
+        $('.carousel.carousel-slider').carousel({
+            fullWidth: true,
+            indicators: true
+        });
+        // move next carousel
+        $('.moveNextCarousel').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('.carousel').carousel('next');
+        });
+
+        // move prev carousel
+        $('.movePrevCarousel').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('.carousel').carousel('prev');
         });
     };
 

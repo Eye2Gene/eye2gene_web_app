@@ -16,6 +16,13 @@ h2.light-blue-text.text-darken-3 style="font-size: 3rem;" Results
     .row
       .col.s5
         .carousel.carousel-slider
+          .carousel-fixed-item.center.middle-indicator
+            .left
+              a.movePrevCarousel.middle-indicator-text.waves-effect.waves-light.content-indicator href="#Previous"
+                i.material-icons.left.middle-indicator-text chevron_left
+            .right
+              a.moveNextCarousel.middle-indicator-text.waves-effect.waves-light.content-indicator href="#Next"
+                i.material-icons.right.middle-indicator-text chevron_right
           - r[:image_files].each do |file|
             a.carousel-item
               img src="#{File.join(@data[:assets_path], File.basename(file))}"

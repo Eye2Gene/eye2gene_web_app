@@ -19,6 +19,13 @@
           .row
             .col.s5
               .carousel.carousel-slider
+                .carousel-fixed-item.center.middle-indicator
+                  .left
+                    a.movePrevCarousel.middle-indicator-text.waves-effect.waves-light.content-indicator href="#Previous"
+                      i.material-icons.left.middle-indicator-text chevron_left
+                  .right
+                    a.moveNextCarousel.middle-indicator-text.waves-effect.waves-light.content-indicator href="#Next"
+                      i.material-icons.right.middle-indicator-text chevron_right
                 - r[:image_files].each do |file|
                   a.carousel-item
                     img src="#{File.join(@data[:assets_path], File.basename(file))}"
@@ -41,8 +48,5 @@ javascript:
     $("html, body").animate({
         scrollTop: $('#analysis_results').offset().top
     });
-    $('.carousel.carousel-slider').carousel({
-        fullWidth: true,
-        indicators: true
-    });
+    EG.initSlider();
   });
