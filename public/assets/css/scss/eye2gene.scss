@@ -255,7 +255,8 @@ p#disclaimer {
         font-size: 4.2rem;
     }
     a.middle-indicator-text {
-        color: white !important;
+        background-color: rgba(255, 255, 255, 0.27);
+        margin: 0 5px;
     }
     .content-indicator {
         width: 64px;
