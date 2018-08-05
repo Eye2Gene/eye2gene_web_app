@@ -98,12 +98,14 @@ module Eye2Gene
           r = {
             file: f,
             input_fname: "#{f[:uuid]}#{File.extname(f[:originalName])}",
-            json_file: File.join(@run_dir, "#{f[:uuid]}.json")
+            json_file: File.join(@run_dir, "#{f[:uuid]}.json"),
           }
           r[:exit_code] = run_analysis_cmd(r[:input_fname], r[:json_file])
           next unless File.exist? r[:json_file]
           json_data = File.read(r[:json_file])
           r[:result_data] = JSON.parse(json_data, symbolize_names: true)
+          r[:image_files] = Dir["#{@run_dir}/*png"] + Dir["#{@run_dir}/*jpeg"] +
+                            Dir["#{@run_dir}/*jpg"]
           @results << r
         end
       end
@@ -139,8 +141,6 @@ module Eye2Gene
           full_path: @run_dir,
           uniq_result_id: @uniq_time,
           results: @results,
-          image_files: Dir["#{@run_dir}/*png"] + Dir["#{@run_dir}/*jpeg"] +
-            Dir["#{@run_dir}/*jpg"]
         }
       end
 

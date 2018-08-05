@@ -20,7 +20,7 @@
             .col.s5
               .carousel.carousel-slider
                 - r[:image_files].each do |file|
-                  .carousel-item
+                  a.carousel-item
                     img src="#{File.join(@data[:assets_path], File.basename(file))}"
             .col.s7
               span.light-blue-text.text-darken-3 style="font-size: 2rem;" Analysis Result: #{r[:file][:originalName]}
