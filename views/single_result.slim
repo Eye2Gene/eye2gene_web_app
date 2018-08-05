@@ -18,7 +18,10 @@
       - @data[:results].each do |r|
           .row
             .col.s5
-              img.eye_image.materialboxed src="#{File.join(@data[:assets_path], r[:input_fname])}"
+              .carousel.carousel-slider
+                - r[:image_files].each do |file|
+                  .carousel-item
+                    img src="#{File.join(@data[:assets_path], File.basename(file))}"
             .col.s7
               span.light-blue-text.text-darken-3 style="font-size: 2rem;" Analysis Result: #{r[:file][:originalName]}
               ul.collapsible.popout data-collapsible="accordion"
@@ -38,5 +41,8 @@ javascript:
     $("html, body").animate({
         scrollTop: $('#analysis_results').offset().top
     });
-
+    $('.carousel.carousel-slider').carousel({
+        fullWidth: true,
+        indicators: true
+    });
   });

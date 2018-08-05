@@ -105,6 +105,10 @@ if (!EG) {
                     $('#analysis_results').show();
                     $('.collapsible').collapsible();
                     $('.materialboxed').materialbox();
+                    $('.carousel.carousel-slider').carousel({
+                        fullWidth: true,
+                        indicators: true
+                    });
                     $("html, body").animate({
                         scrollTop: $('#analysis_results').offset().top
                     });

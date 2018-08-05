@@ -138,7 +138,9 @@ module Eye2Gene
           download_url: "#{url}/eye2gene/users/#{@email}/#{@uniq_time}/results.zip",
           full_path: @run_dir,
           uniq_result_id: @uniq_time,
-          results: @results
+          results: @results,
+          image_files: Dir["#{@run_dir}/*png"] + Dir["#{@run_dir}/*jpeg"] +
+            Dir["#{@run_dir}/*jpg"]
         }
       end
 
