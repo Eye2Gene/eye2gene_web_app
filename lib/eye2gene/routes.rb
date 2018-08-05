@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'base64'
 require 'English'
 require 'json'
@@ -115,7 +113,11 @@ module Eye2Gene
       email = Base64.decode64(params[:encoded_email])
       json_file = File.join(Eye2Gene.public_dir, 'eye2gene/users/', email,
                             params['time'], 'params.json')
-      @results = File.exist? json_file ? JSON.parse(IO.read(json_file)) : {}
+      @data = if File.exist? json_file
+                JSON.parse(IO.read(json_file), symbolize_names: true)
+              else
+                {}
+              end
       slim :single_result, layout: :app_layout
     end
 
@@ -125,7 +127,11 @@ module Eye2Gene
       email     = Base64.decode64(params[:encoded_email])
       json_file = File.join(Eye2Gene.public_dir, 'eye2gene/share/', email,
                             params['time'], 'params.json')
-      @results = File.exist? json_file ? JSON.parse(IO.read(json_file)) : {}
+      @data = if File.exist? json_file
+                JSON.parse(IO.read(json_file), symbolize_names: true)
+              else
+                {}
+              end
       slim :single_result, layout: :app_layout
     end
 
