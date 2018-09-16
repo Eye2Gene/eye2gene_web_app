@@ -2,5 +2,5 @@
 
 # Eye2Gene Namespace
 module Eye2Gene
-  VERSION = '0.0.7'
+  VERSION = '0.0.8'
 end
