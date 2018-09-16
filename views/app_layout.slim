@@ -179,7 +179,7 @@ html lang="en"
       script src="#{uri('assets/js/dependencies/eye2gene.js')}"
     javascript:
       EG.USING_SLL = "#{Eye2Gene.ssl?}"
-    - if request.path_info =~ %r{^/} && request.path_info !~ %r{^/login}
+    - if request.path_info =~ %r{^/analyse} && request.path_info !~ %r{^/login}
       javascript:
         $(function() {
           $('#loading_modal').modal({ dismissible: false });
