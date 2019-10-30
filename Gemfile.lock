@@ -27,10 +27,10 @@ GEM
     ffi (1.9.25)
     method_source (0.9.0)
     mini_mime (1.0.0)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     mustermann (1.0.3)
-    nokogiri (1.8.4)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.4)
+      mini_portile2 (~> 2.4.0)
     passenger (5.3.4)
       rack
       rake (>= 0.8.1)
