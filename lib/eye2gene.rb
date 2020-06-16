@@ -53,7 +53,7 @@ module Eye2Gene
     # default public_dir  = $HOME/.eye2gene/public/
     # default users_dir   = $HOME/.eye2gene/users/
     # default tmp_dir     = $HOME/.eye2gene/tmp/
-    attr_reader :config, :data_dir, :public_dir, :users_dir, :tmp_dir
+    attr_reader :config, :data_dir, :public_dir, :users_dir, :tmp_dir, :script_dir
 
     # Starting the app manually
     def run
@@ -108,6 +108,7 @@ module Eye2Gene
       logger.debug "Eye2Gene Directory: #{config[:data_dir]}"
       init_public_dir
       init_public_data_dirs
+      init_script_dir
       init_tmp_dir
       init_users_dir
       set_up_default_user_dir
@@ -139,6 +140,13 @@ module Eye2Gene
       return if File.exist?(public_gd)
       FileUtils.cp_r(root_data, @public_dir)
     end
+
+    def init_script_dir
+      @script_dir = File.join(Eye2Gene.root, 'scripts')
+      logger.debug "script_dir Directory: #{@script_dir}"
+      FileUtils.mkdir_p @script_dir unless Dir.exist? @script_dir
+    end
+
 
     def init_tmp_dir
       @tmp_dir = File.join(config[:data_dir], 'tmp')

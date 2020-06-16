@@ -78,7 +78,8 @@ module Eye2Gene
         host: '0.0.0.0',
         data_dir: File.join(Dir.home, '.eye2gene/'),
         ssl: false,
-        analysis_script: 'eye2gene_prediction'
+        analysis_script: 'lambda_predict.py',
+        analysis_script_options: '--config ~/.eye2gene_analysis.yaml'
       }
     end
 

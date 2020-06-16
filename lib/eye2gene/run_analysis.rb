@@ -26,7 +26,7 @@ module Eye2Gene
     class << self
       extend Forwardable
 
-      def_delegators Eye2Gene, :config, :logger, :public_dir, :users_dir, :tmp_dir
+      def_delegators Eye2Gene, :config, :logger, :public_dir, :users_dir, :tmp_dir, :script_dir
 
       # Runs the matlab analysis
       def run(params, user, url)
@@ -121,7 +121,13 @@ module Eye2Gene
       end
 
       def analysis_cmd(fname, json_file)
-        "#{config[:analysis_script]} '#{fname}' '#{json_file}'"
+        cmd = String.new
+        if File.exist?(File.join(script_dir, config[:analysis_script]))
+          cmd << "#{script_dir}/#{config[:analysis_script]}"
+        else
+          cmd << "#{config[:analysis_script]}"
+        end
+        cmd << " #{config[:analysis_script_options]} '#{fname}' '#{json_file}'"
       end
 
       def write_results_to_file(url)
