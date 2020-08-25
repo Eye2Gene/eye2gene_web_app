@@ -70,10 +70,34 @@ A Config file can be used to specify arguments - the default location of this fi
 :host: 0.0.0.0
 :eye2gene_dir: "/Users/ismailm/.eye2gene"
 :ssl: false
+:analysis_script: 'lambda_predict.py'
+:analysis_script_options: '--config ~/.eye2gene_analysis.yaml'
 ```
 
 A config file can be generated using the `-s` argument. The above exemplar config file was generated as follows:
 
 ```bash
 eye2gene -s -n 8
+```
+
+The config file for the analysis script `~/.eye2gene_analysis.yaml` can contain any options for the prediction script, which at the moment is in `scripts/lambda_predict.py`:
+
+```yaml
+---
+url: <AWS Lambda endpoint>
+```
+
+The help for lambda_predict.py:
+```python
+usage: lambda_predict.py [-h] [--config CONFIG] [--url URL] [--debug] image results_file
+
+positional arguments:
+  image
+  results_file
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --config CONFIG  Config file location
+  --url URL        AWS Lambda URL to contact
+  --debug          Debug
 ```
